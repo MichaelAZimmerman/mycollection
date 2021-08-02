@@ -11,3 +11,8 @@ router.get("/validation", auth, (req, res) => {
     data: { username: req.user.username },
   });
 });
+
+router.get("/logout", (req, res) => {
+  res.clearCookie("jwt");
+  return res.send({ success: true, error: null, body: null });
+});
