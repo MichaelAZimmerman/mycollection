@@ -40,3 +40,24 @@ router.post("/signup", (req, res) => {
     error: "Invalid data provided by user",
   });
 });
+
+router.post("/login", (req, res) => {
+  const { username, password } = req.body;
+  if (!validate(username, password)) {
+    return res.send({
+      success: false,
+      data: null,
+      error: "Invalid data provided by user",
+    });
+  }
+  passport.authenticate("local-login", (err, user, info) => {
+    if (err) {
+      return res.send({ success: false, error: err, data: null });
+    }
+    return res
+      .cookie("jwt", info.token, { secure: true, httpOnly: true })
+      .send({ success: true, error: null, data: user });
+  })(req, res);
+});
+
+module.exports = router;
