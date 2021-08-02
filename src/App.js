@@ -1,4 +1,6 @@
+import React, { useContext } from "react";
 import "./App.css";
+import { UserContext } from "./context";
 import { NavLink, Redirect, Route, Switch } from "react-router-dom";
 import BrowseUsers from "./components/BrowseUsers";
 import Login from "./components/Login";
@@ -6,6 +8,7 @@ import MyCollection from "./components/MyCollection";
 import MyWishlist from "./components/MyWishlist";
 import Search from "./components/Search";
 import Signup from "./components/Signup";
+import ProtectedRoute from "./shared/ProtectedRoute";
 
 function App() {
   const { username, logout } = useContext(UserContext);
