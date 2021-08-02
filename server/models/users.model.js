@@ -45,3 +45,25 @@ async function signup(res, username, password) {
     return res.send(json);
   }
 }
+
+async function login(username, password) {
+  let json = { data: null, error: null };
+  try {
+    const users = await query("SELECT * FROM users WHERE username = ?", [
+      username,
+    ]);
+    const user = users[0] || { password: 123456 };
+    const match = await bcrypt.compare(password, user.password);
+    if (match) {
+      json = { ...json, data: { username, uuid: user.uuid } };
+    } else {
+      json.error = "Invalid username and/or password";
+    }
+  } catch (err) {
+    json.error = "Something went wrong.";
+  } finally {
+    return json;
+  }
+}
+
+module.exports = { signup, login, getByUserID };
