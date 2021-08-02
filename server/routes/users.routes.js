@@ -5,6 +5,17 @@ const { signup, login } = require("../models/users.model");
 const auth = require("../middleware/auth.middleware");
 const { validate } = require("uuid");
 
+function validate(username, password) {
+  return (
+    username &&
+    username.length >= 4 &&
+    username.length <= 20 &&
+    password &&
+    password.length >= 4 &&
+    password.length <= 20
+  );
+}
+
 router.get("/validation", auth, (req, res) => {
   return res.send({
     success: true,
