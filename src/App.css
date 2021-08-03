@@ -7,6 +7,17 @@
   pointer-events: none;
 }
 
+.form-hint {
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+}
+.form-error {
+  color: crimson;
+  font-size: 10px;
+  font-weight: bold;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
