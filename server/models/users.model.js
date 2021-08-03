@@ -39,7 +39,6 @@ async function signup(res, username, password) {
       json = { ...json, success: true };
     }
   } catch (err) {
-    console.log(err);
     json.error = "Something went wrong!";
   } finally {
     return res.send(json);
