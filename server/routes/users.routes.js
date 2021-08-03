@@ -3,7 +3,6 @@ const passport = require("passport");
 const router = express.Router();
 const { signup, login } = require("../models/users.model");
 const auth = require("../middleware/auth.middleware");
-const { validate } = require("uuid");
 
 function validate(username, password) {
   return (

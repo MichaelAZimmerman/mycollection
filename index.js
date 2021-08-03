@@ -8,7 +8,7 @@ const cookieParser = require("cookie-parser");
 const passport = require("passport");
 const userRoutes = require("./server/routes/users.routes");
 
-app.user(express.json());
+app.use(express.json());
 passportConfig(passport);
 app.use(cookieParser());
 

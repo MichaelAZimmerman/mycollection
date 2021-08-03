@@ -25,8 +25,8 @@ function configPassport(passport) {
     return token;
   };
   const jwtOptions = {
-    secretOrkey: process.env.SECRET_KEY,
-    jwtFromRequest: cookiesJWTExtractor,
+    secretOrKey: process.env.SECRET_KEY,
+    jwtFromRequest: cookieJWTExtractor,
   };
 
   passport.use(
