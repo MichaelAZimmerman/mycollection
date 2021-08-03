@@ -21,7 +21,7 @@ function App() {
           <h6>Please log in continue.</h6>
         )}
       </header>
-      <nav>
+      <nav className="flex-wrap">
         {!username && (
           <>
             <NavLink activeClassName="active" className="link" to="/signup">

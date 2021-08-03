@@ -1,12 +1,24 @@
 .App {
   text-align: center;
 }
+input {
+  margin: 5px;
+}
 
+.input-fields {
+  margin: auto;
+  width: 320px;
+  text-align: right;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
-
+.flex-wrap {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
 .form-hint {
   color: white;
   font-size: 10px;
@@ -16,6 +28,22 @@
   color: crimson;
   font-size: 10px;
   font-weight: bold;
+}
+.link {
+  flex-basis: calc(100% / 5 - 10px);
+  background-color: grey;
+  text-decoration: none;
+  padding: 5px;
+  flex-grow: 1;
+  color: white;
+}
+.active {
+  background-color: darkgrey;
+}
+.active:hover,
+.link:hover {
+  background-color: darkgrey;
+  text-decoration: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
