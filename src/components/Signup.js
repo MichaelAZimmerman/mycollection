@@ -4,6 +4,7 @@ import useFetch from "../hooks/useFetch";
 const Signup = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [passVerify, setPassVerify] = useState("");
   const { APIcall: signupCall } = useFetch("POST");
   const [error, setError] = useState(null);
   return (
@@ -26,6 +27,15 @@ const Signup = () => {
             value={password}
           />
         </div>
+        <div>
+          <label htmlFor="password-verify">Re-Enter Password</label>
+          <input
+            id="password-verify"
+            type="password"
+            onChange={(e) => setPassVerify(e.target.value)}
+            value={passVerify}
+          />
+        </div>
         <button
           onClick={async (e) => {
             e.preventDefault();
@@ -33,7 +43,8 @@ const Signup = () => {
               username.length > 4 &&
               password.length > 4 &&
               username.length <= 20 &&
-              password.length <= 20
+              password.length <= 20 &&
+              password == passVerify
             ) {
               setError(null);
               let res = await signupCall("/api/users/signup", {
