@@ -85,6 +85,7 @@ const Signup = () => {
           Sign Up
         </button>
       </form>
+      <div className="error">{error}</div>
     </>
   );
 };

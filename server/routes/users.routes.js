@@ -15,7 +15,7 @@ function validate(username, password) {
   );
 }
 
-router.get("/validation", auth, (req, res) => {
+router.get("/validate", auth, (req, res) => {
   return res.send({
     success: true,
     error: null,

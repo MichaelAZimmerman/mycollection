@@ -18,10 +18,9 @@ export function UserProvider(props) {
 
   useEffect(() => {
     async function valid() {
-      const res = await validate(`api/users/validate`);
-      if (res.success) {
-        login(res.data.username);
-      }
+      const res = await validate(`/api/users/validate`);
+
+      login(res.data.username);
     }
     valid();
   }, []);

@@ -68,6 +68,7 @@ const Login = () => {
           Log In
         </button>
       </form>
+      <div className="error">{error}</div>
     </>
   );
 };

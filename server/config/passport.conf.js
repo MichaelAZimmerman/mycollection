@@ -32,7 +32,7 @@ function configPassport(passport) {
   passport.use(
     "jwt",
     new Strategy(jwtOptions, async (payload, done) => {
-      if (!payload || payload.uuid) {
+      if (!payload || !payload.uuid) {
         return done(true, false, "Invalid Credentials");
       }
       const { data, error } = await getByUserID(payload.uuid);
