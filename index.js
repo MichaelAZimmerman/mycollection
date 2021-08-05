@@ -1,5 +1,6 @@
 require("dotenv").config();
 require("./server/config/mysql.conf");
+const Discogs = require("disconnect").Client;
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -24,3 +25,35 @@ app.get("*", (req, res) => {
 app.listen(PORT, () =>
   console.log("You're talking to the MyCollection database")
 );
+
+app.get("/authorize", function (req, res) {
+  var oAuth = new Discogs().oauth();
+  oAuth.getRequestToken(
+    CONSUMER_KEY,
+    CONSUMER_SECRET,
+    "http://localhost:3000/callback",
+    function (err, requestData) {
+      // Persist "requestData" here so that the callback handler can
+      // access it later after returning from the authorize url
+      res.redirect(requestData.authorizeUrl);
+    }
+  );
+});
+
+app.get("/callback", function (req, res) {
+  var oAuth = new Discogs(requestData).oauth();
+  oAuth.getAccessToken(
+    req.query.oauth_verifier, // Verification code sent back by Discogs
+    function (err, accessData) {
+      // Persist "accessData" here for following OAuth calls
+      res.send("Received access token!");
+    }
+  );
+});
+
+app.get("/identity", function (req, res) {
+  var dis = new Discogs(accessData);
+  dis.getIdentity(function (err, data) {
+    res.send(data);
+  });
+});
