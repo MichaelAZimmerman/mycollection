@@ -14,12 +14,14 @@ function App() {
   const { username, logout } = useContext(UserContext);
   return (
     <div className="App">
-      <header>
+      <header className="flex-wrap">
+        <img className="App-logo" src="./MC_record.png" />
         {username ? (
-          <h6>Welcome {username}</h6>
+          <div className="header-height">Welcome {username}</div>
         ) : (
-          <h6>Please log in continue.</h6>
+          <div className="header-height">Please log in continue.</div>
         )}
+        <div className="header-space"></div>
       </header>
       <nav className="flex-wrap">
         {!username && (

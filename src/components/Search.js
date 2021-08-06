@@ -12,7 +12,7 @@ const Search = () => {
   const [error, setError] = useState(null);
   const searchRef = useRef(null);
   return (
-    <>
+    <div>
       <form>
         <div className="input-fields">
           <label htmlFor="search">Search</label>
@@ -31,18 +31,16 @@ const Search = () => {
             }
             const res = await db.search(
               searchRef.current.value,
-              "artist",
+              "release-title",
               function (err, data) {
                 console.log(err, data);
+                setSearch(data.results);
               }
             );
 
             if (res.err) {
               return setError(res.err);
             }
-
-            setSearch(res.data);
-            console.log(search);
           }}
         >
           Search
@@ -50,20 +48,24 @@ const Search = () => {
       </form>
       {error && <div className="error">{error}</div>}
       {search && (
-        <div>
-          {search.map((album) => (
-            <AlbumDisplay
-              albumId={album.id}
-              albumTitle={album.title}
-              artistName={album.artist.name}
-              albumImage={album.cover_medium}
-              tracklist={album.tracklist}
-              key={album.id}
-            />
-          ))}
+        <div className="flex-wrap">
+          {search
+            .filter((search) => search.label)
+            .map((album) => (
+              <AlbumDisplay
+                albumId={album.id}
+                title={album.title}
+                country={album.country}
+                albumImage={album.thumb}
+                label={album.label[0]}
+                year={album.year}
+                format={album.format[0]}
+                key={album.id}
+              />
+            ))}
         </div>
       )}
-    </>
+    </div>
   );
 };
 

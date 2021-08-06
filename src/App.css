@@ -4,15 +4,28 @@
 input {
   margin: 5px;
 }
-
 .input-fields {
   margin: auto;
   width: 320px;
   text-align: right;
 }
+.header-height {
+  line-height: 100px;
+  margin: auto;
+}
+.album {
+  background-color: darkgray;
+  flex-basis: calc(25% - 20px);
+  padding: 5px;
+  margin: 5px;
+}
 .App-logo {
-  height: 40vmin;
+  height: 100px;
   pointer-events: none;
+  margin: 5px;
+}
+.header-space {
+  width: 100px;
 }
 .error {
   color: crimson;
@@ -51,7 +64,7 @@ input {
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    animation: App-logo-spin infinite 10s linear;
   }
 }
 

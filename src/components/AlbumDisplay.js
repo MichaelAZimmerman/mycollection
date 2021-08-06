@@ -2,16 +2,21 @@ import React from "react";
 
 function AlbumDisplay({
   albumId,
-  albumTitle,
-  artistName,
+  title,
+  country,
   albumImage,
-  tracklist,
-  key,
+  label,
+  year,
+  format,
 }) {
   return (
-    <div>
-      <h4>{albumTitle}</h4>
+    <div className="album">
+      <div>{title}</div>
       <img src={albumImage} />
+      <div>Year: {year}</div>
+      <div>Country: {country}</div>
+      <div>Label: {label}</div>
+      <div>Format: {format}</div>
     </div>
   );
 }
