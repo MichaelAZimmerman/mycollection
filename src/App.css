@@ -14,8 +14,9 @@ input {
   margin: auto;
 }
 .album {
-  background-color: darkgray;
-  flex-basis: calc(25% - 20px);
+  background-color: grey;
+  border: 2px solid darkgray;
+  flex-basis: calc(25% - 26px);
   padding: 5px;
   margin: 5px;
 }
