@@ -1,4 +1,9 @@
 import React from "react";
+const Discogs = require("disconnect").Client;
+const db = new Discogs({
+  consumerKey: "kydDpioYTpsCBqbnENeT",
+  consumerSecret: "THUzdLLZNTOshjwnnbKmmOylYyNRWBFv",
+}).database();
 
 function AlbumDisplay({
   albumId,
@@ -17,6 +22,16 @@ function AlbumDisplay({
       <div>Country: {country}</div>
       <div>Label: {label}</div>
       <div>Format: {format}</div>
+      <button
+        onClick={async (e) => {
+          e.preventDefault();
+          const res = await db.getMaster(albumId, function (err, data) {
+            console.log(err, data, albumId);
+          });
+        }}
+      >
+        TEST
+      </button>
     </div>
   );
 }
