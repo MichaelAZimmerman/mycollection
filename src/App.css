@@ -4,6 +4,9 @@
 input {
   margin: 5px;
 }
+.sm-font {
+  font-size: small;
+}
 .input-fields {
   margin: auto;
   width: 320px;
