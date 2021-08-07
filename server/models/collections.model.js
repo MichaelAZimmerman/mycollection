@@ -56,3 +56,19 @@ async function addAlbum(res, user_id, album) {
     return res.send(json);
   }
 }
+
+// delete favorite by ID
+async function removeAlbum(res, user_id, album_id) {
+  let json = { success: false, error: null, data: null };
+  try {
+    await query("DELETE FROM favorites WHERE user_id = ? AND album_id = ?", [
+      user_id,
+      album_id,
+    ]);
+    json = { ...json, success: true };
+  } catch (err) {
+    json.error = "Something went wrong.";
+  } finally {
+    return res.send(json);
+  }
+}
