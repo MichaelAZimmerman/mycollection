@@ -9,7 +9,7 @@ const {
 
 router.post("/add", auth, (req, res) => {
   const { album } = req.body;
-  if (album && album.thumb && album.title) {
+  if (album && album.title && album.year && album.format) {
     return addAlbum(res, req.user.id, album);
   }
   return res.send({
@@ -17,4 +17,9 @@ router.post("/add", auth, (req, res) => {
     error: "Invalid data provided.",
     data: null,
   });
+});
+
+router.delete("/delete/:album_id", auth, (req, res) => {
+  const { album_id } = req.params;
+  return removeAlbum(res, req.user.id, album_id);
 });
