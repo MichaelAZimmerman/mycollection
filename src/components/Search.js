@@ -69,8 +69,8 @@ const Search = () => {
                 year={album.year}
                 format={album.format[0]}
                 key={album.id}
-                removeAlbum={removeCollection}
-                addAlbum={addCollection}
+                removeCollection={removeCollection}
+                addCollection={addCollection}
                 isCollected={CollectIds.includes(album.id)}
               />
             ))}

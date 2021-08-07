@@ -15,7 +15,7 @@ button {
   border-radius: 2px;
 }
 button:active {
-  background-color: rgb(212, 199, 182);
+  background-color: rgb(207, 191, 169);
   border-bottom: 2px solid rgb(245, 221, 189);
   border-right: 2px solid rgb(245, 221, 189);
   border-top: 2px solid rgb(199, 170, 132);

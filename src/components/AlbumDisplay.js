@@ -36,8 +36,8 @@ function AlbumDisplay({
   label,
   year,
   format,
-  removeAlbum,
-  addAlbum,
+  removeCollection,
+  addCollection,
   isCollected,
 }) {
   const { tracks, setTracks } = useContext(SearchContext);
@@ -79,14 +79,22 @@ function AlbumDisplay({
           View Track List
         </button>
         {isCollected && (
-          <button onClick={() => removeAlbum(album_id)}>
+          <button onClick={() => removeCollection(album_id)}>
             Remove from Collection
           </button>
         )}
         {!isCollected && (
           <button
             onClick={() =>
-              addAlbum({ album_id, title, country, thumb, label, year, format })
+              addCollection({
+                album_id,
+                title,
+                country,
+                thumb,
+                label,
+                year,
+                format,
+              })
             }
           >
             Add to Collection
