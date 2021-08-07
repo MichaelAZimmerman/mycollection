@@ -6,12 +6,15 @@ import { UserProvider } from "./context/UserContext";
 import { SearchProvider } from "./context";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
+import { CollectionProvider } from "./context/CollectionContext";
 
 ReactDOM.render(
   <Router>
     <UserProvider>
       <SearchProvider>
-        <App />
+        <CollectionProvider>
+          <App />
+        </CollectionProvider>
       </SearchProvider>
     </UserProvider>
   </Router>,
