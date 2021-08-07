@@ -57,7 +57,7 @@ async function addAlbum(res, user_id, album) {
   }
 }
 
-// delete favorite by ID
+// delete album by ID
 async function removeAlbum(res, user_id, album_id) {
   let json = { success: false, error: null, data: null };
   try {
@@ -72,3 +72,5 @@ async function removeAlbum(res, user_id, album_id) {
     return res.send(json);
   }
 }
+
+module.exports = { byAlbumID, byUserID, addAlbum, removeAlbum };
