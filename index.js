@@ -8,12 +8,14 @@ const passportConfig = require("./server/config/passport.conf");
 const cookieParser = require("cookie-parser");
 const passport = require("passport");
 const userRoutes = require("./server/routes/users.routes");
+const collectionRoutes = require("./server/routes/collections.routes");
 
 app.use(express.json());
 passportConfig(passport);
 app.use(cookieParser());
 
 app.use("/api/users", userRoutes);
+app.use("/api/mycollection", collectionRoutes);
 
 app.use(express.static(__dirname + "/build"));
 app.use(passport.initialize());

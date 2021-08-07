@@ -29,13 +29,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function AlbumDisplay({
-  albumId,
+  album_id,
   title,
   country,
-  albumImage,
+  thumb,
   label,
   year,
   format,
+  removeAlbum,
+  addAlbum,
+  isCollected,
 }) {
   const { tracks, setTracks } = useContext(SearchContext);
   const classes = useStyles();
@@ -54,7 +57,7 @@ function AlbumDisplay({
     <div className="album">
       <div className="cover-title">
         <div className="info">{title}</div>
-        <img className="cover" src={albumImage} />
+        <img className="cover" src={thumb} />
       </div>
       <div className="album-info">
         <div className="info">Year: {year}</div>
@@ -65,8 +68,8 @@ function AlbumDisplay({
           className="info"
           onClick={async (e) => {
             e.preventDefault();
-            const res = await db.getMaster(albumId, function (err, data) {
-              console.log(err, data, albumId);
+            const res = await db.getMaster(album_id, function (err, data) {
+              console.log(err, data, album_id);
               setTracks(data.tracklist);
 
               handleOpen();
@@ -75,6 +78,20 @@ function AlbumDisplay({
         >
           View Track List
         </button>
+        {isCollected && (
+          <button onClick={() => removeAlbum(album_id)}>
+            Remove from Collection
+          </button>
+        )}
+        {!isCollected && (
+          <button
+            onClick={() =>
+              addAlbum({ album_id, title, country, thumb, label, year, format })
+            }
+          >
+            Add to Collection
+          </button>
+        )}
       </div>
       <Modal
         open={open}

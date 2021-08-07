@@ -5,7 +5,6 @@ const {
   addAlbum,
   removeAlbum,
   byUserID,
-  byUserID,
 } = require("../models/collections.model");
 
 router.post("/add", auth, (req, res) => {

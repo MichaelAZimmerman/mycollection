@@ -1,5 +1,6 @@
-import React, { useRef, useState, useContext } from "react";
+import React, { useRef, useState, useContext, useMemo } from "react";
 import { SearchContext, UserContext } from "../context";
+import { CollectionContext } from "../context/CollectionContext";
 import AlbumDisplay from "./AlbumDisplay";
 const Discogs = require("disconnect").Client;
 const db = new Discogs({
@@ -8,10 +9,15 @@ const db = new Discogs({
 }).database();
 
 const Search = () => {
-  const { search, setSearch } = useContext(SearchContext);
+  const { search, setSearch, clearSearch } = useContext(SearchContext);
   const [error, setError] = useState(null);
   const searchRef = useRef(null);
-  const { clearSearch } = useContext(SearchContext);
+  const { collection, addCollection, removeCollection } =
+    useContext(CollectionContext);
+
+  const CollectIds = useMemo(() => {
+    return collection.map((val) => val.album_id);
+  }, [collection]);
   return (
     <div>
       <form>
@@ -55,14 +61,17 @@ const Search = () => {
             .filter((search) => search.label)
             .map((album) => (
               <AlbumDisplay
-                albumId={album.master_id}
+                album_id={album.master_id}
                 title={album.title}
                 country={album.country}
-                albumImage={album.thumb}
+                thumb={album.thumb}
                 label={album.label[0]}
                 year={album.year}
                 format={album.format[0]}
                 key={album.id}
+                removeAlbum={removeCollection}
+                addAlbum={addCollection}
+                isCollected={CollectIds.includes(album.id)}
               />
             ))}
         </div>
