@@ -4,7 +4,7 @@ const auth = require("../middleware/auth.middleware");
 const {
   addAlbum,
   removeAlbum,
-  byUserId,
+  byUserID,
   byUserID,
 } = require("../models/collections.model");
 
