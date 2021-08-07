@@ -5,6 +5,7 @@ const {
   addAlbum,
   removeAlbum,
   byUserId,
+  byUserID,
 } = require("../models/collections.model");
 
 router.post("/add", auth, (req, res) => {
@@ -23,3 +24,9 @@ router.delete("/delete/:album_id", auth, (req, res) => {
   const { album_id } = req.params;
   return removeAlbum(res, req.user.id, album_id);
 });
+
+router.get("/user", auth, (req, res) => {
+  return byUserID(res, req.user.id);
+});
+
+module.exports = router;
