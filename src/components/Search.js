@@ -11,6 +11,7 @@ const Search = () => {
   const { search, setSearch } = useContext(SearchContext);
   const [error, setError] = useState(null);
   const searchRef = useRef(null);
+  const { clearSearch } = useContext(SearchContext);
   return (
     <div>
       <form>
@@ -33,6 +34,7 @@ const Search = () => {
               searchRef.current.value,
               "release-title",
               function (err, data) {
+                clearSearch();
                 console.log(err, data);
                 setSearch(data.results);
               }
@@ -48,7 +50,7 @@ const Search = () => {
       </form>
       {error && <div className="error">{error}</div>}
       {search && (
-        <div className="flex-wrap">
+        <div className="flex-column">
           {search
             .filter((search) => search.label)
             .map((album) => (

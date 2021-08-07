@@ -52,25 +52,30 @@ function AlbumDisplay({
   };
   return (
     <div className="album">
-      <div>{title}</div>
-      <img src={albumImage} />
-      <div>Year: {year}</div>
-      <div>Country: {country}</div>
-      <div>Label: {label}</div>
-      <div>Format: {format}</div>
-      <button
-        onClick={async (e) => {
-          e.preventDefault();
-          const res = await db.getMaster(albumId, function (err, data) {
-            console.log(err, data, albumId);
-            setTracks(data.tracklist);
+      <div className="cover-title">
+        <div className="info">{title}</div>
+        <img className="cover" src={albumImage} />
+      </div>
+      <div className="album-info">
+        <div className="info">Year: {year}</div>
+        <div className="info">Country: {country}</div>
+        <div className="info">Label: {label}</div>
+        <div className="info">Format: {format}</div>
+        <button
+          className="info"
+          onClick={async (e) => {
+            e.preventDefault();
+            const res = await db.getMaster(albumId, function (err, data) {
+              console.log(err, data, albumId);
+              setTracks(data.tracklist);
 
-            handleOpen();
-          });
-        }}
-      >
-        View Track List
-      </button>
+              handleOpen();
+            });
+          }}
+        >
+          View Track List
+        </button>
+      </div>
       <Modal
         open={open}
         onClose={handleClose}

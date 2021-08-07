@@ -17,11 +17,36 @@ input {
   margin: auto;
 }
 .album {
+  display: flex;
   background-color: grey;
   border: 2px solid darkgray;
-  flex-basis: calc(25% - 26px);
+  flex-basis: calc(100%-14);
   padding: 5px;
   margin: 5px;
+}
+.cover {
+  height: 150px;
+  width: 150px;
+}
+.info {
+  margin: 10px;
+}
+.cover-title {
+  color: white;
+  background-color: dimgray;
+  border: 2px solid darkgray;
+  font-weight: bold;
+  font-size: 12px;
+  display: flex;
+
+  flex-direction: column;
+  margin: auto;
+  width: 150px;
+}
+.album-info {
+  display: flex;
+  flex-basis: 70%;
+  flex-direction: column;
 }
 .App-logo {
   height: 100px;
@@ -38,6 +63,10 @@ input {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
 }
 .form-hint {
   color: white;
