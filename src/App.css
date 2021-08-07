@@ -1,6 +1,18 @@
 .App {
   text-align: center;
 }
+body {
+  background-color: rgb(59, 47, 49);
+  color: antiquewhite;
+}
+button {
+  background-color: antiquewhite;
+  border-top: 2px solid rgb(245, 221, 189);
+  border-left: 2px solid rgb(245, 221, 189);
+  border-bottom: 2px solid rgb(199, 170, 132);
+  border-right: 2px solid rgb(199, 170, 132);
+  border-radius: 2px;
+}
 input {
   margin: 5px;
 }
