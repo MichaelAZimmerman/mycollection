@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import "./App.css";
-import { UserContext } from "./context";
+import { CollectionContext, UserContext } from "./context";
 import { NavLink, Redirect, Route, Switch } from "react-router-dom";
 import BrowseUsers from "./components/BrowseUsers";
 import Login from "./components/Login";
@@ -9,9 +9,27 @@ import MyWishlist from "./components/MyWishlist";
 import Search from "./components/Search";
 import Signup from "./components/Signup";
 import ProtectedRoute from "./shared/ProtectedRoute";
+import useFetch from "./hooks/useFetch";
 
 function App() {
+  const { APIcall: getCollection } = useFetch("GET");
   const { username, logout } = useContext(UserContext);
+  const { setCollection } = useContext(CollectionContext);
+
+  useEffect(() => {
+    if (username === null) {
+      return;
+    }
+    async function call() {
+      const res = await getCollection(`/api/mycollection/user/`);
+      if (!res.success) {
+        return console.error(res.error);
+      }
+      setCollection(res.data);
+    }
+    call();
+  }, [username]);
+
   return (
     <div className="App">
       <header className="flex-wrap">

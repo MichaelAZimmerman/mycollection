@@ -59,7 +59,7 @@ function AlbumDisplay({
         <div className="info">{title}</div>
         <img className="cover" src={thumb} />
       </div>
-      <div className="album-info">
+      <div className="album-info, text-center">
         <div className="info">Year: {year}</div>
         <div className="info">Country: {country}</div>
         <div className="info">Label: {label}</div>
