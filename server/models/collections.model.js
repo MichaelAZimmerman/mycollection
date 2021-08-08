@@ -1,12 +1,28 @@
 const query = require("../config/mysql.conf");
 
-// find albums by user_id
+// find collection by user_id
 async function byUserID(res, user_id) {
   let json = { success: false, error: null, data: null };
   try {
     const collection = await query(
       "SELECT * FROM mycollection WHERE user_id = ?",
       [user_id]
+    );
+    json = { ...json, success: true, data: collection };
+  } catch (err) {
+    json.error = "Something went wrong.";
+  } finally {
+    return res.send(json);
+  }
+}
+
+// find collection by username
+async function byUserName(res, username) {
+  let json = { success: false, error: null, data: null };
+  try {
+    const collection = await query(
+      "SELECT * FROM mycollection LEFT JOIN users ON mycollection.user_id = users.id WHERE username = ?",
+      [username]
     );
     json = { ...json, success: true, data: collection };
   } catch (err) {
@@ -75,4 +91,4 @@ async function removeAlbum(res, user_id, album_id) {
   }
 }
 
-module.exports = { byAlbumID, byUserID, addAlbum, removeAlbum };
+module.exports = { byAlbumID, byUserID, addAlbum, removeAlbum, byUserName };
