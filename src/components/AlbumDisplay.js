@@ -105,7 +105,7 @@ function AlbumDisplay({
         )}
         {isWanted && (
           <button onClick={() => removeWantList(album_id)}>
-            Remove from Want List
+            Remove from Wish List
           </button>
         )}
         {!isWanted && (
@@ -122,7 +122,7 @@ function AlbumDisplay({
               })
             }
           >
-            Add to Want List
+            Add to Wish List
           </button>
         )}
       </div>

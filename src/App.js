@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import "./App.css";
-import { CollectionContext, UserContext } from "./context";
+import { CollectionContext, UserContext, WantListContext } from "./context";
 import { NavLink, Redirect, Route, Switch } from "react-router-dom";
 import BrowseUsers from "./components/BrowseUsers";
 import Login from "./components/Login";
@@ -13,8 +13,10 @@ import useFetch from "./hooks/useFetch";
 
 function App() {
   const { APIcall: getCollection } = useFetch("GET");
+  const { APIcall: getWantList } = useFetch("GET");
   const { username, logout } = useContext(UserContext);
   const { setCollection } = useContext(CollectionContext);
+  const { setWantList } = useContext(WantListContext);
 
   useEffect(() => {
     if (username === null) {
@@ -26,6 +28,20 @@ function App() {
         return console.error(res.error);
       }
       setCollection(res.data);
+    }
+    call();
+  }, [username]);
+
+  useEffect(() => {
+    if (username === null) {
+      return;
+    }
+    async function call() {
+      const res = await getWantList(`/api/mywishlist/user/`);
+      if (!res.success) {
+        return console.error(res.error);
+      }
+      setWantList(res.data);
     }
     call();
   }, [username]);
