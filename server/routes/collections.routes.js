@@ -32,6 +32,7 @@ router.get("/user", auth, (req, res) => {
 
 router.get("/users/:username", auth, (req, res) => {
   const { username } = req.params;
+  console.log(username);
   return byUserName(res, req.user.id, username);
 });
 
