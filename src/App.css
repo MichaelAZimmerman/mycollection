@@ -32,7 +32,8 @@ input {
 }
 .input-fields {
   margin: auto;
-  width: 320px;
+  width: 300px;
+  font-size: 14px;
   text-align: right;
 }
 .header-height {
@@ -95,7 +96,7 @@ header {
   flex-direction: column;
 }
 .form-hint {
-  color: white;
+  color: rgb(202, 194, 177);
   font-size: 10px;
   font-weight: bold;
 }
