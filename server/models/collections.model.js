@@ -52,7 +52,6 @@ async function addAlbum(res, user_id, album) {
 
     json = { ...json, success: true, data: album };
   } catch (err) {
-    console.log(err);
     json.error = "Something went wrong.";
   } finally {
     return res.send(json);
