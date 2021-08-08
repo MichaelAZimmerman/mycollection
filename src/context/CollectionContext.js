@@ -7,8 +7,8 @@ export function CollectionProvider(props) {
   const { APIcall: addCall } = useFetch("POST");
   const [collection, setCollection] = useState([]);
 
-  const addCollection = useCallback(async (record) => {
-    const res = await addCall("/api/mycollection/add", { record });
+  const addCollection = useCallback(async (album) => {
+    const res = await addCall("/api/mycollection/add", { album });
     if (!res.success) {
       return console.error(res.error);
     }

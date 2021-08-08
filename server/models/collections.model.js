@@ -36,10 +36,10 @@ async function addAlbum(res, user_id, album) {
   let json = { success: false, error: null, data: null };
   try {
     const result = await query(
-      "INSERT INTO mycollection (user_id, album_id, title, year, country, format, label, thumb) VALUES (?,?,?,?,?,?,?,?)",
+      "INSERT INTO mycollection ( album_id, user_id, title, year, country, format, label, thumb) VALUES (?,?,?,?,?,?,?,?)",
       [
-        user_id,
         album.album_id,
+        user_id,
         album.title,
         album.year,
         album.country,
@@ -49,8 +49,10 @@ async function addAlbum(res, user_id, album) {
       ]
     );
     album = { ...album, id: result.insertId, user_id };
+
     json = { ...json, success: true, data: album };
   } catch (err) {
+    console.log(err);
     json.error = "Something went wrong.";
   } finally {
     return res.send(json);
