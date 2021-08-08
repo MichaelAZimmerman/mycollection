@@ -8,7 +8,7 @@ export function WantListProvider(props) {
   const [wantList, setWantList] = useState([]);
 
   const addWantList = useCallback(async (album) => {
-    const res = await addCall("/api/mywantlist/add", { album });
+    const res = await addCall("/api/mywishlist/add", { album });
     if (!res.success) {
       return console.error(res.error);
     }
@@ -16,7 +16,7 @@ export function WantListProvider(props) {
   }, []);
 
   const removeWantList = useCallback(async (album_id) => {
-    const res = await deleteCall(`/api/mywantlist/delete/${album_id}`);
+    const res = await deleteCall(`/api/mywishlist/delete/${album_id}`);
     if (!res.success) {
       return console.error(res.error);
     }

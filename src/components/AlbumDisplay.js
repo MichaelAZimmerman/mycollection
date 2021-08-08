@@ -36,8 +36,11 @@ function AlbumDisplay({
   label,
   year,
   format,
+  addWantList,
+  removeWantList,
   removeCollection,
   addCollection,
+  isWanted,
   isCollected,
 }) {
   const { tracks, setTracks } = useContext(SearchContext);
@@ -98,6 +101,28 @@ function AlbumDisplay({
             }
           >
             Add to Collection
+          </button>
+        )}
+        {isWanted && (
+          <button onClick={() => removeWantList(album_id)}>
+            Remove from Want List
+          </button>
+        )}
+        {!isWanted && (
+          <button
+            onClick={() =>
+              addWantList({
+                album_id,
+                title,
+                country,
+                thumb,
+                label,
+                year,
+                format,
+              })
+            }
+          >
+            Add to Want List
           </button>
         )}
       </div>

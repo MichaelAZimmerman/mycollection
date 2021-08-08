@@ -7,13 +7,16 @@ import { SearchProvider } from "./context";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
 import { CollectionProvider } from "./context/CollectionContext";
+import { WantListProvider } from "./context/WantListContext";
 
 ReactDOM.render(
   <Router>
     <UserProvider>
       <SearchProvider>
         <CollectionProvider>
-          <App />
+          <WantListProvider>
+            <App />
+          </WantListProvider>
         </CollectionProvider>
       </SearchProvider>
     </UserProvider>

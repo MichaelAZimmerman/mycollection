@@ -4,7 +4,7 @@ const query = require("../config/mysql.conf");
 async function wantByUserID(res, user_id) {
   let json = { success: false, error: null, data: null };
   try {
-    const wantList = await query("SELECT * FROM mywantlist WHERE user_id = ?", [
+    const wantList = await query("SELECT * FROM mywishlist WHERE user_id = ?", [
       user_id,
     ]);
     json = { ...json, success: true, data: wantList };
@@ -19,7 +19,7 @@ async function wantByUserID(res, user_id) {
 async function wantByAlbumID(res, id) {
   let json = { success: false, error: null, data: null };
   try {
-    const wantList = await query("SELECT * FROM mywantlist WHERE id = ?", [id]);
+    const wantList = await query("SELECT * FROM mywishlist WHERE id = ?", [id]);
     json = { ...json, success: true, data: wantList[0] };
   } catch (err) {
     json.error = "Something went wrong.";
@@ -33,7 +33,7 @@ async function wantAlbum(res, user_id, album) {
   let json = { success: false, error: null, data: null };
   try {
     const result = await query(
-      "INSERT INTO mywantlist ( album_id, user_id, title, year, country, format, label, thumb) VALUES (?,?,?,?,?,?,?,?)",
+      "INSERT INTO mywishlist ( album_id, user_id, title, year, country, format, label, thumb) VALUES (?,?,?,?,?,?,?,?)",
       [
         album.album_id,
         user_id,
@@ -59,7 +59,7 @@ async function wantAlbum(res, user_id, album) {
 async function unwantAlbum(res, user_id, album_id) {
   let json = { success: false, error: null, data: null };
   try {
-    await query("DELETE FROM mywantlist WHERE user_id = ? AND album_id = ?", [
+    await query("DELETE FROM mywishlist WHERE user_id = ? AND album_id = ?", [
       user_id,
       album_id,
     ]);

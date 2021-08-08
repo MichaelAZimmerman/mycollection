@@ -11,6 +11,7 @@ export default function useFetch(method) {
     }
     try {
       const res = await fetch(url, opts);
+
       if (res.ok) {
         const json = await res.json();
         return json;

@@ -1,6 +1,5 @@
 import React, { useRef, useState, useContext, useMemo } from "react";
-import { SearchContext, UserContext } from "../context";
-import { CollectionContext } from "../context/CollectionContext";
+import { SearchContext, WantListContext, CollectionContext } from "../context";
 import AlbumDisplay from "./AlbumDisplay";
 const Discogs = require("disconnect").Client;
 const db = new Discogs({
@@ -14,10 +13,14 @@ const Search = () => {
   const searchRef = useRef(null);
   const { collection, addCollection, removeCollection } =
     useContext(CollectionContext);
+  const { wantList, addWantList, removeWantList } = useContext(WantListContext);
 
-  const CollectIds = useMemo(() => {
+  const collectIds = useMemo(() => {
     return collection.map((val) => val.album_id);
   }, [collection]);
+  const wantIds = useMemo(() => {
+    return wantList.map((val) => val.album_id);
+  }, [wantList]);
   return (
     <div>
       <form>
@@ -69,9 +72,12 @@ const Search = () => {
                 year={album.year}
                 format={album.format[0]}
                 key={album.id}
+                addWantList={addWantList}
+                removeWantList={removeWantList}
                 removeCollection={removeCollection}
                 addCollection={addCollection}
-                isCollected={CollectIds.includes(album.id)}
+                isWanted={wantIds.includes(album.id)}
+                isCollected={collectIds.includes(album.id)}
               />
             ))}
         </div>
