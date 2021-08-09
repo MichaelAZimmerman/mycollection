@@ -21,10 +21,11 @@ async function byUserName(res, username) {
   let json = { success: false, error: null, data: null };
   try {
     const collection = await query(
-      "SELECT * FROM mycollection LEFT JOIN users ON mycollection.user_id = users.id WHERE username = ?",
+      "SELECT album_id, title, year, country, format, label, thumb FROM mycollection LEFT JOIN users ON mycollection.user_id = users.id WHERE username = ?",
       [username]
     );
     json = { ...json, success: true, data: collection };
+    console.log(collection);
   } catch (err) {
     json.error = "Something went wrong.";
   } finally {
