@@ -25,7 +25,6 @@ async function byUserName(res, username) {
       [username]
     );
     json = { ...json, success: true, data: collection };
-    console.log(collection);
   } catch (err) {
     json.error = "Something went wrong.";
   } finally {
@@ -85,7 +84,6 @@ async function removeAlbum(res, user_id, album_id) {
     ]);
     json = { ...json, success: true };
   } catch (err) {
-    console.log(err);
     json.error = "Something went wrong.";
   } finally {
     return res.send(json);

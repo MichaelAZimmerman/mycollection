@@ -39,8 +39,6 @@ const BrowseUsers = () => {
               return setError(res.error);
             }
             setSearch(res.data);
-            console.log(res.error);
-            console.log(wantIds, collectIds);
           }}
         >
           Search

@@ -9,7 +9,7 @@ const {
 
 router.post("/add", auth, (req, res) => {
   const { album } = req.body;
-  console.log({ album });
+
   if (album && album.title && album.year && album.format) {
     return wantAlbum(res, req.user.id, album);
   }

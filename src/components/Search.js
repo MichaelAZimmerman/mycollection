@@ -44,7 +44,7 @@ const Search = () => {
               "release-title",
               function (err, data) {
                 clearSearch();
-                console.log(err, data);
+
                 setSearch(data.results);
               }
             );

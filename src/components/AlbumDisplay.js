@@ -72,7 +72,6 @@ function AlbumDisplay({
           onClick={async (e) => {
             e.preventDefault();
             const res = await db.getMaster(album_id, function (err, data) {
-              console.log(err, data, album_id);
               setTracks(data.tracklist);
 
               handleOpen();
