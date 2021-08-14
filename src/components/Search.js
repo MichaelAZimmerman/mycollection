@@ -64,7 +64,7 @@ const Search = () => {
             .filter((search) => search.label)
             .map((album) => (
               <AlbumDisplay
-                album_id={album.master_id}
+                album_id={album.id}
                 title={album.title}
                 country={album.country}
                 thumb={album.thumb}
