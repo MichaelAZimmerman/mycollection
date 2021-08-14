@@ -68,7 +68,6 @@ function AlbumDisplay({
         <div className="info">Label: {label}</div>
         <div className="info">Format: {format}</div>
         <button
-          className="info"
           onClick={async (e) => {
             e.preventDefault();
             const res = await db.getMaster(album_id, function (err, data) {

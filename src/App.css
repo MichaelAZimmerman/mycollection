@@ -47,16 +47,17 @@ header {
   display: flex;
   background-color: grey;
   border: 2px solid darkgray;
-  flex-basis: calc(100%-14);
+  flex-basis: 100%;
   padding: 5px;
   margin: 5px;
+  justify-content: space-around;
 }
 .cover {
   height: 150px;
   width: 150px;
 }
 .info {
-  margin: 10px;
+  margin: 5px;
 }
 .cover-title {
   color: white;
@@ -65,14 +66,14 @@ header {
   font-weight: bold;
   font-size: 12px;
   display: flex;
-
+  justify-content: space-around;
   flex-direction: column;
-  margin: auto;
+
   width: 150px;
 }
 .album-info {
   display: flex;
-  margin: auto;
+
   flex-direction: column;
 }
 .App-logo {
@@ -134,5 +135,16 @@ header {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media (min-width: 750px) {
+  .album {
+    flex-basis: calc(50% - 25px);
+  }
+}
+@media (min-width: 1000px) {
+  .album {
+    flex-basis: calc(100% / 3 - 25px);
   }
 }

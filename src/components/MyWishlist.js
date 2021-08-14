@@ -15,7 +15,7 @@ const MyWishlist = () => {
   return (
     <>
       <h4>{username}'s Wish List</h4>
-      <div className="flex-column">
+      <div className="flex-wrap">
         {wantList.map((album) => (
           <AlbumDisplay
             album_id={album.album_id}

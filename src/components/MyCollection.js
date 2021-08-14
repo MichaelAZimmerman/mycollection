@@ -14,7 +14,7 @@ const MyCollection = () => {
   return (
     <>
       <h4>{username}'s Music Collection</h4>
-      <div className="flex-column">
+      <div className="flex-wrap">
         {collection.map((album) => (
           <AlbumDisplay
             album_id={album.album_id}
