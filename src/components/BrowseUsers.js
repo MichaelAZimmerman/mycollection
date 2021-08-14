@@ -46,7 +46,7 @@ const BrowseUsers = () => {
       </form>
       {error && <div className="error">{error}</div>}
       {search && (
-        <div className="flex-column">
+        <div className="flex-wrap">
           {search
             .filter((search) => search.label)
             .map((album) => (
