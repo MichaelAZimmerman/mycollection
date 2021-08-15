@@ -67,62 +67,64 @@ function AlbumDisplay({
         <div className="info">Country: {country}</div>
         <div className="info">Label: {label}</div>
         <div className="info">Format: {format}</div>
-        <button
-          onClick={async (e) => {
-            e.preventDefault();
-            const res = await db.getMaster(album_id, function (err, data) {
-              setTracks(data.tracklist);
+        <div className="flex-column">
+          <button
+            onClick={async (e) => {
+              e.preventDefault();
+              const res = await db.getMaster(album_id, function (err, data) {
+                setTracks(data.tracklist);
 
-              handleOpen();
-            });
-          }}
-        >
-          View Track List
-        </button>
-        {isCollected && (
-          <button onClick={() => removeCollection(album_id)}>
-            Remove from Collection
-          </button>
-        )}
-        {!isCollected && (
-          <button
-            onClick={() =>
-              addCollection({
-                album_id,
-                title,
-                country,
-                thumb,
-                label,
-                year,
-                format,
-              })
-            }
+                handleOpen();
+              });
+            }}
           >
-            Add to Collection
+            View Track List
           </button>
-        )}
-        {isWanted && (
-          <button onClick={() => removeWantList(album_id)}>
-            Remove from Wish List
-          </button>
-        )}
-        {!isWanted && (
-          <button
-            onClick={() =>
-              addWantList({
-                album_id,
-                title,
-                country,
-                thumb,
-                label,
-                year,
-                format,
-              })
-            }
-          >
-            Add to Wish List
-          </button>
-        )}
+          {isCollected && (
+            <button onClick={() => removeCollection(album_id)}>
+              Remove from Collection
+            </button>
+          )}
+          {!isCollected && (
+            <button
+              onClick={() =>
+                addCollection({
+                  album_id,
+                  title,
+                  country,
+                  thumb,
+                  label,
+                  year,
+                  format,
+                })
+              }
+            >
+              Add to Collection
+            </button>
+          )}
+          {isWanted && (
+            <button onClick={() => removeWantList(album_id)}>
+              Remove from Wish List
+            </button>
+          )}
+          {!isWanted && (
+            <button
+              onClick={() =>
+                addWantList({
+                  album_id,
+                  title,
+                  country,
+                  thumb,
+                  label,
+                  year,
+                  format,
+                })
+              }
+            >
+              Add to Wish List
+            </button>
+          )}
+        </div>
       </div>
       <Modal
         open={open}
